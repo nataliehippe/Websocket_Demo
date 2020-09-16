@@ -32,6 +32,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController _controller = TextEditingController();
+  final TextEditingController _urlController =
+      TextEditingController();
   WebSocketChannel channel;
   bool connectionStatus = false;
   List<String> messageList = [];
@@ -41,6 +43,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _controller.text = '';
+    _urlController.text='wss://echo.websocket.org';
   }
 
   @override
@@ -73,8 +76,8 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.only(top: 5.0, left: 1.0),
-                    child: Text(
-                      'ws://echo.websocket.org',
+                    child: TextField(
+                      controller: _urlController,
                       textAlign: TextAlign.left,
                     ),
                   ),
@@ -204,7 +207,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   void _connectToChannel() {
-    channel = IOWebSocketChannel.connect('ws://echo.websocket.org');
+    channel = IOWebSocketChannel.connect(_urlController.text);
     setState(() {
       connectionStatus = true;
       _controller.text = '';
