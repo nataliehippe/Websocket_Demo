@@ -5,6 +5,8 @@ import 'package:web_socket_channel/web_socket_channel.dart';
 
 import 'widgets/my_button.dart';
 
+//testing forks
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -32,8 +34,7 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   TextEditingController _controller = TextEditingController();
-  final TextEditingController _urlController =
-      TextEditingController();
+  final TextEditingController _urlController = TextEditingController();
   WebSocketChannel channel;
   bool connectionStatus = false;
   List<String> messageList = [];
@@ -43,7 +44,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     super.initState();
     _controller.text = '';
-    _urlController.text='wss://echo.websocket.org';
+    _urlController.text = 'wss://echo.websocket.org';
   }
 
   @override
